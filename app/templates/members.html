@@ -1,0 +1,39 @@
+{% extends "base.html" %} {%block content%} {% if members %}
+<h1 class="p-2 text-xl"><b>Members</b></h1>
+<div class="p-2">
+<button class="rounded-none bg-indigo-700 text-white p-1">
+  <a href="{{ url_for('addmember') }}">Add Members</a>
+</button>
+</div>
+<div class="p-2">
+<table>
+  <tr>
+    <th class="border border-slate-500">MemberID</th>
+    <th class="border border-slate-500">Name</th>
+    <th class="border border-slate-500">Email</th>
+    <th class="border border-slate-500">Edit</th>
+    <th class="border border-slate-500">Delete</th>
+  </tr>
+  {% for member in members %}
+  <tr>
+    <td class="border border-slate-500">{{ member.memberID }}</td>
+    <td class="border border-slate-500">{{ member.name }}</td>
+    <td class="border border-slate-500">{{ member.email }}</td>
+    <td class="border border-slate-500">
+      <a href="{{ url_for('editmember', id=member.memberID) }}"
+        ><i class="fa-solid fa-pen-to-square"></i
+      ></a>
+    </td>
+    <td class="border border-slate-500">
+      <a href="{{ url_for('deletemember', id=member.memberID) }}"
+        ><i class="fa-solid fa-trash"></i
+      ></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+{% else %}
+<p>No members found.</p>
+{% endif %} {% endblock %}

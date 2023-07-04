@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="text-xl p-1 bold"><b>Reports</b></h1>
+<br />
+<h2 class="text-xl p-1 bold"><b>Expenses</b></h2>
+{% if expenses %}
+<div class="p-2">
+  <table class="border border-slate-500 table-auto">
+    <thead>
+      <tr>
+        <th class="border border-slate-500">Total Paid(Paid by customers)</th>
+        <th class="border border-slate-500">Total Amount(Outstanding)</th>
+       
+      </tr>
+    </thead>
+    <tr>
+      <td class="border border-slate-500">{{ expenses.AMOUNT }}</td>
+      <td class="border border-slate-500">{{ expenses.TOTAL }}</td>
+    </tr>
+  </table>
+</div>
+{% else %}
+<p>No expenses found.</p>
+{% endif %}
+<br />
+<h2 class="text-xl p-1 bold"><b>Total members joined this month</b></h2>
+{% if members_joined %}
+<div class="p-2">
+  <table class="border border-slate-500 table-auto">
+    <thead>
+      <tr>
+        <th class="border border-slate-500">Members joined this month</th>
+      </tr>
+    </thead>
+    <tr>
+      <td class="border border-slate-500">{{ members_joined }}</td>
+    </tr>
+  </table>
+</div>
+{% else %}
+<p>No members joined.</p>
+{% endif %}
+{% endblock %}
